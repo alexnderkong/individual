@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h1>Create a Post</h1>
+<p>Enter your content & details</p>
+
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+
+
+		{{ form.title.label }}
+		{% if form.title.errors %}
+		{{ form.title }}
+		<div class="error">
+			{% for error in form.title.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.title }}
+		{% endif %}
+
+		<br>
+
+		{{ form.content.label }}
+		{% if form.content.errors %}
+		{{ form.content }}
+		<div class="error">
+			{%for error in form.content.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.content }}
+		{% endif %}
+
+		<br>
+
+		{{ form.submit }}
+	</form>
+</div>
+
+
+{% endblock body_content %}

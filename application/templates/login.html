@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<h1>Login Page</h1>
+	<p>Enter your Email & Password!</p>
+	
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+
+		{{ form.email.label }}
+		{% if form.email.errors %}
+		{{ form.email }}
+		<div class="error">
+			{% for error in form.email.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.email }}
+		{% endif %}
+
+		<br>
+
+		{{ form.password.label }}
+		{% if form.password.errors %}
+		{{ form.password }}
+		<div class="error">
+			{% for error in form.password.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.password }}
+		{% endif %}
+
+		<br>
+
+		{{ form.submit }}
+
+
+		<div class="form-group">
+			{{ form.remember.label }}
+			{{ form.remember }}
+		</div>
+	</form>
+</div>
+
+{% endblock body_content %}

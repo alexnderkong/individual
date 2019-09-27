@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ title }} - Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+	{% if current_user.is_authenticated %}
+		<a href="{{ url_for('logout') }}">Log out</a>
+		<a href="{{ url_for('home') }}">Home</a>
+		<a href="{{ url_for('about') }}">About</a>
+		<a href="{{ url_for('post') }}">Posts</a>
+		<a href="{{ url_for('account') }}">Account</a>
+	{% else %}
+		<a href="{{ url_for('register') }}">Register</a>
+		<a href="{{ url_for('login') }}">Log in</a>
+		<a href="{{ url_for('home') }}">Home</a>
+		<a href="{{ url_for('about') }}">About</a>
+	{% endif %}
+
+
+<div class="jumbotron text-center">
+	{% block body_content %}{% endblock %}
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>AAQIB 1</h3>
+	  <img src="static/aaqib.jpeg" alt="Error Text" height=100% width=100%>
+
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
