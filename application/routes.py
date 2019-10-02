@@ -123,7 +123,7 @@ def delete(id):
 	try:
 		db.session.delete(pokemon_to_delete)
 		db.session.commit()
-		return redirect('/homeuser', user_id=current_user.id)
+		return redirect(url_for('homeuser', user_id=current_user.id))
 	except:
 		return 'An issue occurred'
 
@@ -135,7 +135,7 @@ def update(id):
 		post.level = request.form['level']
 		try:
 			db.session.commit()
-			return redirect('/homeuser', user_id=current_user.id)
+			return redirect(url_for('homeuser', user_id=current_user.id))
 		except:
 			return 'An issue occurred'
 
