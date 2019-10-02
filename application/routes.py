@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Posts, Users
 from application.forms import PostForm, UsersForm, LoginForm, UpdateAccountForm, UpdatePokemonForm, SearchForm
-from flask_login import login_user, current_user, logout_user, login_required
+from flask_login import login_user, current_user, logout_user, login_required, LoginManager
 
 @app.route('/')
 @app.route('/home')
@@ -11,23 +11,27 @@ def home():
 	#postData = Posts.query.all()
 	#return render_template('home.html', title='home', posts=postData)
 
-@app.route('/homeuser', methods=['POST','GET'])
+@app.route('/homeuser/<int:user_id>', methods=['POST','GET'])
 @login_required
-def homeuser():
-	postData = Posts.query.all()
+def homeuser(user_id):
+	if current_user.id != user_id:
+		return redirect(url_for('home'))
+	else:	
+		user = Users.query.get_or_404(user_id)
+		postData = Posts.query.filter_by(user_id=user_id)
 
 	form = SearchForm()
 	if request.method == 'POST' and form.content.data == 'All':
 		try:
 			print("Alex")
-			return redirect(url_for('homeuser'))
+			return redirect(url_for('homeuser', user_id=current_user.id))
 		except:
 			return "not working"
 	elif request.method == 'POST':
 		
 		try:
 			print("Hello")
-			postData = Posts.query.filter_by(content=form.content.data).all()
+			postData = Posts.query.filter_by(content=form.content.data, user_id=current_user.id).all()
 		except:
 			return 'broken'
 	return render_template('homeuser.html', title='Homeuser', homeuser=postData ,form=form)
@@ -41,7 +45,7 @@ def about():
 @app.route('/login', methods=['GET','POST'])
 def login():
 	if current_user.is_authenticated:
-		return redirect(url_for('homeuser'))
+		return redirect(url_for('homeuser', user_id=current_user.id))
 
 	form = LoginForm()
 	if form.validate_on_submit():
@@ -52,7 +56,7 @@ def login():
 			if next_page:
 				return redirect(next_page)
 			else:
-				return redirect(url_for('homeuser'))
+				return redirect(url_for('homeuser', user_id=current_user.id))
 	return render_template('login.html', title='Login', form=form)
 
 @app.route('/register', methods=['GET','POST'])
@@ -87,7 +91,7 @@ def post():
 			)
 		db.session.add(postData)
 		db.session.commit()
-		return redirect(url_for('homeuser'))
+		return redirect(url_for('homeuser', user_id=current_user.id))
 	else:
 		print(form.errors)
 	return render_template('post.html', title='post', form=form)
@@ -119,7 +123,7 @@ def delete(id):
 	try:
 		db.session.delete(pokemon_to_delete)
 		db.session.commit()
-		return redirect('/homeuser')
+		return redirect('/homeuser', user_id=current_user.id)
 	except:
 		return 'An issue occurred'
 
@@ -131,7 +135,7 @@ def update(id):
 		post.level = request.form['level']
 		try:
 			db.session.commit()
-			return redirect('/homeuser')
+			return redirect('/homeuser', user_id=current_user.id)
 		except:
 			return 'An issue occurred'
 

@@ -42,20 +42,13 @@ class PostForm(FlaskForm):
 
 class UpdatePokemonForm(FlaskForm):
 
-	level = SelectField('Level',
-		choices=[
-			('1',1),
-			('2',2),
-			('3',3),
-			('4',4),
-			('5',5),
-			('6',6),
-			('7',7),
-			('8',8),
-			('9',9),
-			('10',10)
+	number = []
+	for i in range(100):
+		temp = [i+1, i+1]
+		number.append(temp)
 
-		])
+	level = SelectField('Level',
+		choices=number)
 
 	submit = SubmitField('Update Post')
 
