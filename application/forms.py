@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
 from application import bcrypt
@@ -7,22 +7,68 @@ from flask_login import current_user
 
 class PostForm(FlaskForm):
 
-	title = StringField('Title',
+	title = StringField('Pokemon',
 		validators=[
 			DataRequired(),
 			Length(min=4,max=100)
 
 		])
 
-	content = StringField('Content',
-		validators=[
-			DataRequired(),
-			Length(min=4,max=1000)
+	content = SelectField('Type',
+		choices=[
+			('Fire', 'Fire'),
+			('Water', 'Water'),
+			('Grass', 'Grass')
 
 		])
+
+	level = SelectField('Level',
+		choices=[
+			('1',1),
+			('2',2),
+			('3',3),
+			('4',4),
+			('5',5),
+			('6',6),
+			('7',7),
+			('8',8),
+			('9',9),
+			('10',10)
+
+		])
+
 	submit = SubmitField('Submit Post')
 
 
+class UpdatePokemonForm(FlaskForm):
+
+	level = SelectField('Level',
+		choices=[
+			('1',1),
+			('2',2),
+			('3',3),
+			('4',4),
+			('5',5),
+			('6',6),
+			('7',7),
+			('8',8),
+			('9',9),
+			('10',10)
+
+		])
+
+	submit = SubmitField('Update Post')
+
+class SearchForm(FlaskForm):
+	content = SelectField('Type',
+		choices=[
+			('Fire', 'Fire'),
+			('Water', 'Water'),
+			('Grass', 'Grass'),
+			('All', 'All')
+
+		])
+	submit = SubmitField('Submit Post')
 
 class UsersForm(FlaskForm):
 	first_name = StringField('First Name',

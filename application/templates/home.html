@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Home Page</h1>
+	<h1>Home Page ALEX</h1>
 	<p>Welcome to the home page!</p>
 
 {% for post in posts %}	
@@ -9,6 +9,10 @@
 		<span>by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
 		<span>on the <i> {{ post.date_posted }}</i></span>
 		<p>{{ post.content }}</p>
+		<p>{{ post.level }}</p>
+		<a href="/delete/{{ post.id }}">Delete</a>
+		<a href="/update/{{ post.id }}">Update</a>
+
 	</div>
 {% endfor %}
 {% endblock body_content %}

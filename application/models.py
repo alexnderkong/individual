@@ -5,7 +5,8 @@ from datetime import datetime
 class Posts(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(200),nullable=False, unique=True)
-	content = db.Column(db.String(10000),nullable=False, unique=True)
+	content = db.Column(db.String(100),nullable=False)
+	level = db.Column(db.Integer, nullable=False)
 	date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 	user_id = db.Column(db.Integer,db.ForeignKey('users.id'), nullable=False)

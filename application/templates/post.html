@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<h1>Create a Post</h1>
-<p>Enter your content & details</p>
+<h1>Add a Pokemon</h1>
+<p>Add new pokemon to your pokedex</p>
 
 <div class="form">
 	<form method="POST" action="">
@@ -35,6 +35,19 @@
 		{% endif %}
 
 		<br>
+
+		{{ form.level.label }}
+		{% if form.level.errors %}
+		{{ form.level }}
+		<div class="error">
+			{% for error in form.level.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.level }}
+		{% endif %}
+
 
 		{{ form.submit }}
 	</form>

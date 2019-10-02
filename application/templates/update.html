@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<h1>Home Page</h1>
+	<p>Welcome to the home page!</p>
+
+	
+	<div>
+		<form action="/update/{{ post.id }}", method="POST">
+
+		{{ form.hidden_tag() }}
+		{{ form.level.label }}
+		{% if form.level.errors %}
+		{{ form.level }}
+		<div class="error">
+			{% for error in form.level.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.level }}
+		{% endif %}
+		<br>
+		{{ form.submit }}
+		</form>
+	</div>
+
+{% endblock body_content %}

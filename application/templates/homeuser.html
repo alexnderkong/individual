@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<h1>Your Pokedex</h1>
+	<p>View all your Pokemon!</p>
+
+<div class="content">
+	<form method="POST" action="">
+		<div class="form">
+
+		{{ form.content.label }}
+		{% if form.content.errors %}
+		{{ form.content }}
+		<div class="error">
+			{% for error in form.content.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.content }}
+
+		{% endif %}
+		{{ form.submit }}
+		</div>
+	</form>
+
+{% for post in homeuser %}	
+	<div>
+		<h3>{{ post.title }}</h3>
+		<span>by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
+		<span>on the <i> {{ post.date_posted }}</i></span>
+		<p>{{ post.content }}</p>
+		<p>{{ post.level }}</p>
+		<a href="/delete/{{ post.id }}">Delete</a>
+		<a href="/update/{{ post.id }}">Update</a>
+
+	</div>
+</div>
+{% endfor %}
+{% endblock body_content %}
+
