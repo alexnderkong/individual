@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Your Pokedex</h1>
-	<p>View all your Pokemon!</p>
 
-<div class="content">
+	<div class="titles">
+		<h1>Your Pokedex</h1>
+	<p>View all your Pokemon!</p>
+	</div>
+	<div class="content" , style="text-align: center;">
 	<form method="POST" action="">
 		<div class="form">
 
@@ -25,14 +27,16 @@
 
 {% for post in homeuser %}	
 	<div>
+	<div class="jumbotron text-center">
+	
 		<h3>{{ post.title }}</h3>
-		<span>by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
-		<span>on the <i> {{ post.date_posted }}</i></span>
-		<p>{{ post.content }}</p>
-		<p>{{ post.level }}</p>
+		<span>Caught by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
+		<span>on the <i> {{ post.date_posted.strftime('%Y-%m-%d, %H:%M') }}</i></span>
+		<p>Type: {{ post.content }}</p>
+		<p>Level: {{ post.level }}</p>
 		<a href="/delete/{{ post.id }}">Delete</a>
 		<a href="/update/{{ post.id }}">Update</a>
-
+	</div>
 	</div>
 </div>
 {% endfor %}

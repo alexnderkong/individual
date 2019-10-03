@@ -1,0 +1,27 @@
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+	background-color: whitesmoke;
+}
+
+li{
+	float:left;
+}
+
+li, a{
+	display:inline-block;
+	color:black;
+	text-align: center;
+	padding: 6px 16px;
+}
+
+.titles{
+	text-align: center;
+	padding-top: 50px;
+}
+
+body{
+	text-align: center;
+}
