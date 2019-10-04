@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, SubmitField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
@@ -35,6 +36,11 @@ class PostForm(FlaskForm):
 			('9',9),
 			('10',10)
 
+		])
+
+	picture = FileField('Add a picture',
+		validators=[
+			FileAllowed(['jpg','png'])
 		])
 
 	submit = SubmitField('Submit Post')

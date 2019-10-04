@@ -4,18 +4,18 @@
 <p>Add new pokemon to your pokedex</p>
 
 <div class="form">
-	<form method="POST" action="">
+	<form method="POST" action="", enctype="multipart/form-data">
 		{{ form.hidden_tag() }}
 
 
 		{{ form.title.label }}
 		{% if form.title.errors %}
-		{{ form.title }}
-		<div class="error">
-			{% for error in form.title.errors %}
-			<span>{{ error }}</span>
-			{% endfor %}
-		</div>
+			{{ form.title }}
+			<div class="error">
+				{% for error in form.title.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
 		{% else %}
 			{{ form.title }}
 		{% endif %}
@@ -46,6 +46,17 @@
 		</div>
 		{% else %}
 			{{ form.level }}
+		{% endif %}
+		{{ form.picture.label }}
+		{% if form.picture.errors %}
+		{{ form.picture }}
+		<div class="error">
+			{%for error in form.picture.errors %}
+			<span>{{ error }}</span>
+			{% endfor %}
+		</div>
+		{% else %}
+			{{ form.picture }}
 		{% endif %}
 
 

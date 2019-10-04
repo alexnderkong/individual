@@ -3,6 +3,7 @@ from application import app, db, bcrypt
 from application.models import Posts, Users
 from application.forms import PostForm, UsersForm, LoginForm, UpdateAccountForm, UpdatePokemonForm, SearchForm
 from flask_login import login_user, current_user, logout_user, login_required, LoginManager
+import os
 
 @app.route('/')
 @app.route('/home')
@@ -11,9 +12,17 @@ def home():
 	#postData = Posts.query.all()
 	#return render_template('home.html', title='home', posts=postData)
 
+def save_picture(form_picture):
+	picture_path = os.path.join(app.root_path, 'static', form_picture.filename)
+	picture = form_picture.filename
+	form_picture.save(picture_path)
+	return picture
+
+
 @app.route('/homeuser/<int:user_id>', methods=['POST','GET'])
 @login_required
 def homeuser(user_id):
+	posts = Posts.query.filter_by(user_id=user_id)
 	if current_user.id != user_id:
 		return redirect(url_for('home'))
 	else:	
@@ -82,16 +91,33 @@ def register():
 @login_required
 def post():
 	form=PostForm()
+	image_file = url_for('static', filename='default.png')
 	if form.validate_on_submit():
-		postData=Posts(
-			title=form.title.data,
-			content=form.content.data,
-			level=form.level.data,
-			author=current_user
-			)
-		db.session.add(postData)
-		db.session.commit()
-		return redirect(url_for('homeuser', user_id=current_user.id))
+		if form.picture.data:
+			picture_path = save_picture(form.picture.data)
+			full_path = '/static/' + picture_path
+			postData=Posts(
+				title=form.title.data,
+				content=form.content.data,
+				level=form.level.data,
+				author=current_user,
+				image_file=full_path
+				)
+			db.session.add(postData)
+			db.session.commit()
+			image_file = url_for('static', filename=picture_path)
+			return redirect(url_for('homeuser', user_id=current_user.id))
+		else:
+			postData=Posts(
+				title=form.title.data,
+				content=form.content.data,
+				level=form.level.data,
+				author=current_user,
+				image_file='/static/default.png'
+				)
+			db.session.add(postData)
+			db.session.commit()
+			return redirect(url_for('homeuser', user_id=current_user.id))
 	else:
 		print(form.errors)
 	return render_template('post.html', title='post', form=form)
