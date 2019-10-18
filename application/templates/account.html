@@ -1,16 +1,19 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<div class="posts">
+<div class="accounts">
 <h1>Your Account</h1>
-<p>Change your Details</p>
+<h5>Your Current Details</h5><br>
 
-<h3>{{ current_user.first_name }} {{ current_user.last_name }} <br> {{ current_user.email }} </h3>
+<h5>{{ current_user.first_name }} {{ current_user.last_name }} <br> {{ current_user.email }} </h5>
+<br>
+
+<h4>Change Your Details</h4><br>
 
 <div class="form">
 	<form method="POST" action="">
 		{{ form.hidden_tag() }}
 
-		{{ form.first_name.label }}
+		{{ form.first_name.label }}<br>
 		{% if form.first_name.errors %}
 		{{ form.first_name }}
 		<div class="error">
@@ -19,11 +22,11 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.first_name }}
+			{{ form.first_name(class="poke2") }}
 		{% endif %}
-		<br>
+		<br><br>
 
-				{{ form.last_name.label }}
+				{{ form.last_name.label }}<br>
 		{% if form.last_name.errors %}
 		{{ form.last_name }}
 		<div class="error">
@@ -32,12 +35,12 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.last_name }}
+			{{ form.last_name(class="poke2") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.email.label }}
+		{{ form.email.label }}<br>
 		{% if form.email.errors %}
 		{{ form.email }}
 		<div class="error">
@@ -46,12 +49,12 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.email }}
+			{{ form.email(class="poke2") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.submit }}
+		{{ form.submit(class="poke2") }}
 	</form>
 </div>
 </div>

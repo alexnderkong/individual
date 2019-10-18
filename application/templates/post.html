@@ -1,14 +1,16 @@
 {% extends "layout.html" %}
 {% block body_content %}
+<div class="add">
 <h1>Add a Pokemon</h1>
 <p>Add new pokemon to your pokedex</p>
 
 <div class="form">
 	<form method="POST" action="", enctype="multipart/form-data">
 		{{ form.hidden_tag() }}
-
+		<br>
 
 		{{ form.title.label }}
+		<br>
 		{% if form.title.errors %}
 			{{ form.title }}
 			<div class="error">
@@ -17,12 +19,13 @@
 				{% endfor %}
 			</div>
 		{% else %}
-			{{ form.title }}
+			{{ form.title(class="poke") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
 		{{ form.content.label }}
+		<br>
 		{% if form.content.errors %}
 		{{ form.content }}
 		<div class="error">
@@ -31,12 +34,13 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.content }}
+			{{ form.content(class="poke") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
 		{{ form.level.label }}
+		<br>
 		{% if form.level.errors %}
 		{{ form.level }}
 		<div class="error">
@@ -45,8 +49,11 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.level }}
+			{{ form.level(class="poke") }}
 		{% endif %}
+
+		<br><br>
+
 		{{ form.picture.label }}
 		{% if form.picture.errors %}
 		{{ form.picture }}
@@ -56,13 +63,14 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.picture }}
+			{{ form.picture(class="poke2") }}
 		{% endif %}
 
+		<br><br>
 
-		{{ form.submit }}
+		{{ form.submit(class="poke") }}
 	</form>
 </div>
-
+</div>
 
 {% endblock body_content %}

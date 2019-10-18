@@ -31,16 +31,24 @@
 	<div class="posts">
 		
 		<h3>{{ post.title }}</h3>
-		<span>Caught by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
-		<span>on the <i> {{ post.date_posted.strftime('%Y-%m-%d, %H:%M') }}</i></span>
+		
 		<p>Type: {{ post.content }}</p>
 		<p>Level: {{ post.level }}</p>
-		<a href="/delete/{{ post.id }}">Delete</a>
-		<a href="/update/{{ post.id }}">Update</a>
 		<img src="{{ post.image_file }}">
+		<br><br>
+		<span>Caught by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
+		<span>on the <i> {{ post.date_posted.strftime('%Y-%m-%d, %H:%M') }}</i></span>
+		<br><br>
+		<div class="buttons">
+		<a href="/delete/{{ post.id }}">Delete</a>
+		</div>
+		<div class="buttons">
+		<a href="/update/{{ post.id }}">Update</a>
+		</div>
 
 	</div>
 	</div>
+</div>
 </div>
 {% endfor %}
 {% endblock body_content %}

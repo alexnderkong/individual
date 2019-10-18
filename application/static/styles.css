@@ -46,6 +46,50 @@ li, a{
 	text-align: center;
 }
 
+.accounts{
+  text-align: center;
+  position: relative;
+  top:50px;
+}
+
+.add{
+  text-align: center;
+  position: relative;
+  top:50px;
+}
+
+img{
+  width:200px;
+  height:200px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+.buttons{
+  background-color: darkgrey;
+  border:none;
+  display:inline-block;
+  text-align: center;
+  color:white;
+  border-radius: 10%;
+}
+
+a{
+  text-decoration: none;
+  color:white;
+}
+
+a:hover{
+  color:white;
+  text-decoration: none;
+}
+
+.buttons:hover{
+  background-color: gray;
+  text-decoration: none;
+  color: white;
+}
+
 @media only screen and (min-width: 600px) {
   /* For tablets: */
   .col-s-1 {width: 8.33%;}
@@ -76,3 +120,22 @@ li, a{
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+.poke{
+  width:30%;
+  text-align: center;
+  height:50px;
+  min-width: 300px;
+}
+
+.poke:hover{
+
+}
+
+.poke2{
+  width:30%;
+  height:50px;
+  text-align: center;
+  min-width: 300px;
+}
+

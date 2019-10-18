@@ -43,7 +43,7 @@ class PostForm(FlaskForm):
 			FileAllowed(['jpg','png'])
 		])
 
-	submit = SubmitField('Submit Post')
+	submit = SubmitField('Add Pokemon')
 
 
 class UpdatePokemonForm(FlaskForm):
@@ -67,7 +67,7 @@ class SearchForm(FlaskForm):
 			('All', 'All')
 
 		])
-	submit = SubmitField('Submit Post')
+	submit = SubmitField('Filter')
 
 class UsersForm(FlaskForm):
 	first_name = StringField('First Name',
@@ -150,7 +150,7 @@ class UpdateAccountForm(FlaskForm):
 			Email()
 		])
 
-	submit=SubmitField('Sign Up')
+	submit=SubmitField('Alter')
 
 	def validate_email(self,email):
 		if email.data != current_user.email:
