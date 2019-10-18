@@ -167,3 +167,17 @@ def update(id):
 
 	else:
 		return render_template('update.html', form=form, post=post)
+
+@app.route('/user/delete/<int:user_id>', methods=['GET','POST'])
+@login_required
+def delete_user(user_id):
+	user = Users.query.get_or_404(user_id)
+	post = Posts.query.filter_by(user_id=user_id).all()
+	if user:
+		for i in post:
+			db.session.delete(i)
+		db.session.delete(user)
+		db.session.commit()
+		return redirect(url_for('logout'))
+	else:
+		return'Error occurred'

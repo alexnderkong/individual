@@ -139,3 +139,13 @@ a:hover{
   min-width: 300px;
 }
 
+.btn{
+  background-color: black;
+  border-color: black;
+  height: 50px;
+}
+
+.btn:hover{
+  background-color: black;
+  border-color: black;
+}

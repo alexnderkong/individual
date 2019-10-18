@@ -40,15 +40,18 @@
 		<span>on the <i> {{ post.date_posted.strftime('%Y-%m-%d, %H:%M') }}</i></span>
 		<br><br>
 		<div class="buttons">
-		<a href="/delete/{{ post.id }}">Delete</a>
-		</div>
-		<div class="buttons">
 		<a href="/update/{{ post.id }}">Update</a>
 		</div>
+		<div class="buttons">
+		<a href="/delete/{{ post.id }}">Delete</a>
+		</div>
+
 
 	</div>
 	</div>
 </div>
 </div>
+  
 {% endfor %}
+
 {% endblock body_content %}

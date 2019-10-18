@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Home Page</h1>
-	<p>Welcome to the home page!</p>
+<div class="accounts">
+	<h1>Update Pokemon</h1>
+	<p>Change the level of your Pokemon!</p>
 
 	
 	<div>
 		<form action="/update/{{ post.id }}", method="POST">
 
 		{{ form.hidden_tag() }}
-		{{ form.level.label }}
+		{{ form.level.label }}<br>
 		{% if form.level.errors %}
 		{{ form.level }}
 		<div class="error">
@@ -17,11 +18,11 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.level }}
+			{{ form.level(class="poke") }}
 		{% endif %}
-		<br>
-		{{ form.submit }}
+		<br><br>
+		{{ form.submit(class="poke") }}
 		</form>
-	</div>
+	</div></div>
 
 {% endblock body_content %}

@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Home Page ALEX</h1>
-	<p>Welcome to the home page!</p>
+<div class="accounts">
+	<h1>Pokedex</h1>
+	<p><strong>Catalog all of your Pokemon</strong></p>
 
 {% for post in posts %}	
 	<div>
@@ -14,5 +15,6 @@
 		<a href="/update/{{ post.id }}">Update</a>
 
 	</div>
+</div>
 {% endfor %}
 {% endblock body_content %}
