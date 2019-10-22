@@ -8,7 +8,7 @@ import os
 @app.route('/')
 @app.route('/home')
 def home():
-	return render_template('home.html', title='about')
+	return render_template('home.html', title='Home')
 	#postData = Posts.query.all()
 	#return render_template('home.html', title='home', posts=postData)
 
@@ -120,7 +120,7 @@ def post():
 			return redirect(url_for('homeuser', user_id=current_user.id))
 	else:
 		print(form.errors)
-	return render_template('post.html', title='post', form=form)
+	return render_template('post.html', title='Add Pokemon', form=form)
 
 @app.route("/logout")
 def logout():
