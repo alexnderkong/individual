@@ -1,15 +1,19 @@
 {% extends "layout.html" %}
 {% block body_content %}
+<div class="accounts">
 <h1>Your Account</h1>
-<p>Change your Details</p>
+<p>Your Current Details</p><br>
 
-<h3>{{ current_user.first_name }} <br> {{ current_user.last_name }} <br> {{ current_user.email }} </h3>
+<h5>{{ current_user.first_name }} {{ current_user.last_name }} <br> {{ current_user.email }} </h5>
+<br>
+
+<h4>Change Your Details</h4><br>
 
 <div class="form">
 	<form method="POST" action="">
 		{{ form.hidden_tag() }}
 
-		{{ form.first_name.label }}
+		{{ form.first_name.label }}<br>
 		{% if form.first_name.errors %}
 		{{ form.first_name }}
 		<div class="error">
@@ -18,11 +22,11 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.first_name }}
+			{{ form.first_name(class="poke2") }}
 		{% endif %}
-		<br>
+		<br><br>
 
-				{{ form.last_name.label }}
+				{{ form.last_name.label }}<br>
 		{% if form.last_name.errors %}
 		{{ form.last_name }}
 		<div class="error">
@@ -31,12 +35,12 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.last_name }}
+			{{ form.last_name(class="poke2") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.email.label }}
+		{{ form.email.label }}<br>
 		{% if form.email.errors %}
 		{{ form.email }}
 		<div class="error">
@@ -45,13 +49,36 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.email }}
+			{{ form.email(class="poke2") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.submit }}
-	</form>
+		{{ form.submit(class="poke2") }}
+	</form><br>
+
+	<span><button type="button" class="btn btn-danger mb-20" data-toggle="modal" data-target="#deleteModal">Delete</button></span>
+</div>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to delete your account? All of your Pokedex will be Deleted!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_user', user_id=current_user.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
 </div>
 
 

@@ -2,47 +2,37 @@
 <html>
 <head>
 <title>{{ title }} - Page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/static/styles.css">
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 </head>
 <body>
 	{% if current_user.is_authenticated %}
-		<a href="{{ url_for('logout') }}">Log out</a>
-		<a href="{{ url_for('home') }}">Home</a>
-		<a href="{{ url_for('about') }}">About</a>
-		<a href="{{ url_for('post') }}">Posts</a>
-		<a href="{{ url_for('account') }}">Account</a>
+	<ul>
+		<li style="float:right;"><a style="color:black;" href="{{ url_for('logout') }}">Log out</a></li>
+		<a href="{{ url_for('homeuser', user_id=current_user.id) }}"><li>Home</li></a>
+		<a href="{{ url_for('about') }}"><li>About</li></a>
+		<a href="{{ url_for('post') }}"><li>Add Pokemon</li></a>
+		<a href="{{ url_for('account') }}"><li>Account</li></a>
+	</ul>
 	{% else %}
-		<a href="{{ url_for('register') }}">Register</a>
-		<a href="{{ url_for('login') }}">Log in</a>
-		<a href="{{ url_for('home') }}">Home</a>
-		<a href="{{ url_for('about') }}">About</a>
+		<a style="color:black;" href="{{ url_for('register') }}">Register</a>
+		<a style="color:black;" href="{{ url_for('login') }}">Log in</a>
+		<a style="color:black;" href="{{ url_for('home') }}">Home</a>
+		<a style="color:black;" href="{{ url_for('about') }}">About</a>
 	{% endif %}
 
 
-<div class="jumbotron text-center">
-	{% block body_content %}{% endblock %}
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>AAQIB 1</h3>
-	  <img src="static/aaqib.jpeg" alt="Error Text" height=100% width=100%>
-
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-  </div>
-</div>
+{% block body_content %}{% endblock %}
 
 </body>
 </html>

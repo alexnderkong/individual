@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 {% block body_content %}
+<div class="accounts">
 <h1>Sign Up</h1>
-<p>Enter your Email & Password</p>
+<img class="ball" src="static/pokeball.jpg">
+<p>Enter your Details</p>
 
 <div class="form">
 	<form method="POST" action="">
 		{{ form.hidden_tag() }}
 
-		{{ form.first_name.label }}
+		{{ form.first_name.label }}<br>
 		{% if form.first_name.errors %}
 		{{ form.first_name }}
 		<div class="error">
@@ -16,10 +18,10 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.first_name }}
+			{{ form.first_name(class="poke") }}
 		{% endif %}
-
-				{{ form.last_name.label }}
+		<br><br>
+				{{ form.last_name.label }}<br>
 		{% if form.last_name.errors %}
 		{{ form.last_name }}
 		<div class="error">
@@ -28,11 +30,11 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.last_name }}
+			{{ form.last_name(class="poke") }}
 		{% endif %}
+		<br><br>
 
-
-		{{ form.email.label }}
+		{{ form.email.label }}<br>
 		{% if form.email.errors %}
 		{{ form.email }}
 		<div class="error">
@@ -41,12 +43,12 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.email }}
+			{{ form.email(class="poke") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.password.label }}
+		{{ form.password.label }}<br>
 		{% if form.password.errors %}
 		{{ form.password }}
 		<div class="error">
@@ -55,12 +57,12 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.password }}
+			{{ form.password(class="poke") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.confirmpassword.label }}
+		{{ form.confirmpassword.label }}<br>
 		{% if form.confirmpassword.errors %}
 		{{ form.confirmpassword }}
 		<div class="error">
@@ -69,13 +71,14 @@
 			{% endfor %}
 		</div>
 		{% else %}
-			{{ form.confirmpassword }}
+			{{ form.confirmpassword(class="poke") }}
 		{% endif %}
 
-		<br>
+		<br><br>
 
-		{{ form.submit }}
+		{{ form.submit(class="poke") }}
 	</form>
+</div>
 </div>
 
 

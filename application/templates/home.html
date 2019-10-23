@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Home Page</h1>
-	<p>Welcome to the home page!</p>
+<div class="accounts">
+	<h1>Pokedex</h1>
+		<img class="ball" src="static/pokeball.jpg">
+	<p><strong>Catalog all of your Pokemon</strong></p><br>
+
+<iframe width="800" height="415" src="https://www.youtube.com/embed/fKiz265SMME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 {% for post in posts %}	
 	<div>
@@ -9,6 +14,12 @@
 		<span>by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
 		<span>on the <i> {{ post.date_posted }}</i></span>
 		<p>{{ post.content }}</p>
+		<p>{{ post.level }}</p>
+		<a href="/delete/{{ post.id }}">Delete</a>
+		<a href="/update/{{ post.id }}">Update</a>
+
 	</div>
+</div>
+
 {% endfor %}
 {% endblock body_content %}
