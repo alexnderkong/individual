@@ -1,29 +1,45 @@
-How to open the application Pokedex.
+#Introduction
 
-1. Spin up a GCP virtual machine instance.
-2. Git Pull or Clone the repository to the virtual machine.
-3. Install all relevant packages such as Flask & Bcrypt.
-4. Enter the Virtual Environment.
-5. Run the application.
+This web application has been developed on Ubuntu distributions and has been deployed on the Google Cloud Platform.
 
-How to use the application Pokedex.
+#Pre-Requisites
 
-1. Follow the GCP external IP address.
-2. append :5000/ to the address.
-3. Allow unsecure access to the website.
+  ```sudo apt-get update
+     sudo apt-get install -y python3
+     sudo apt-get install -y python3-pip
+     sudo apt-get install virtualenv
+     sudo apt-get git
+```
+#Run The Application
+
+  Get the Git Repository using:
+    ```
+      git clone https://www.github.com/alexnderkong/individual.git
+      cd individual/application
+      pip3 install -r requirements.txt
+    ```
+  Activate the virtual Environment:
+     ``` 
+      virtualenv -p python3 venv
+      source venv/bin/activate
+      . venv/bin/activate
+     ``` 
+  Run the Application Locally:
+    ```
+    python3 run.py
+    ```
+  Follow the GCP external IP address.
+  append :5000/ to the address.
+  Allow unsecure access to the website.
 
 
-Docker: Built on Ubuntu.
+#Deploying on Docker
 
-run the following commands:
-  sudo apt-get update 
-  sudo apt-get install virtualenv
-  sudo apt-get install python3-pip
+  To deploy the application on Docker use the following:
+  ```
+    git clone https://www.github.com/alexnderkong/individual.git
+    cd individual
+    Docker Build . -t flask
+    Docker Run -d -p 5000:5000 flask
+  ```
   
-  install -r requirements.txt
-  
-  git clone FILE
-  cd
-  
-  Docker Build 
-  Docker Run
