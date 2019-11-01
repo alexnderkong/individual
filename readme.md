@@ -59,9 +59,6 @@ This web application has been developed on Ubuntu distributions and has been dep
     pip3 install -r requirements.txt
     EOF
     ```
-# start the flask app
-sudo systemctl start flask-app
-
 # Deploying on Docker
 
   To deploy the application on Docker use the following:
