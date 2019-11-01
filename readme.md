@@ -2,7 +2,7 @@
 
 This web application has been developed on Ubuntu distributions and has been deployed on the Google Cloud Platform.
 
-#Pre-Requisites
+# Pre-Requisites
 
   ```sudo apt-get update
      sudo apt-get install -y python3
@@ -10,7 +10,7 @@ This web application has been developed on Ubuntu distributions and has been dep
      sudo apt-get install virtualenv
      sudo apt-get git
 ```
-#Run The Application
+# Run The Application
 
   Get the Git Repository using:
     ```
@@ -33,7 +33,7 @@ This web application has been developed on Ubuntu distributions and has been dep
   Allow unsecure access to the website.
 
 
-#Deploying on Docker
+# Deploying on Docker
 
   To deploy the application on Docker use the following:
   ```
