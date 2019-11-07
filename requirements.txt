@@ -2,7 +2,7 @@ boto==2.38.0
 chardet==2.3.0
 crcmod==1.7
 pip==8.1.1
-requests==2.9.1
+requests==2.20.0
 setuptools==20.7.0
 six==1.10.0
 urllib3==1.13.1
