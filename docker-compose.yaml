@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  my-sql:
+    build: ./db
+    environment:
+    - MYSQL_ROOT_PASSWORD=root   
+      
+  app:
+    build: .
+    ports: 
+    - target: 5000
+      published: 80
+      protocol: tcp
+    depends_on:
+    - my-sql

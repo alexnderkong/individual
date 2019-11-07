@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `posts` (
-  `id` tinyint(4) DEFAULT NULL,
-  `title` varchar(9) DEFAULT NULL,
-  `content` varchar(5) DEFAULT NULL,
-  `level` tinyint(4) DEFAULT NULL,
-  `date_posted` varchar(10) DEFAULT NULL,
-  `image_file` varchar(21) DEFAULT NULL,
-  `user_id` tinyint(4) DEFAULT NULL
+                        `id`          tinyint(4) DEFAULT NULL, 
+                        `title`       varchar(9) DEFAULT NULL, 
+                        `content`     varchar(5) DEFAULT NULL, 
+                        `level`       tinyint(4) DEFAULT NULL, 
+                        `date_posted` varchar(10) DEFAULT NULL, 
+                        `image_file`  varchar(21) DEFAULT NULL, 
+                        `user_id`     tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,12 +50,16 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` tinyint(4) DEFAULT NULL,
-  `first_name` varchar(4) DEFAULT NULL,
-  `last_name` varchar(4) DEFAULT NULL,
-  `email` varchar(14) DEFAULT NULL,
-  `password` varchar(0) DEFAULT NULL
+CREATE TABLE users 
+           ( 
+                        id         INTEGER NOT NULL, 
+                        first_name VARCHAR(50) NOT NULL, 
+                        last_name  VARCHAR(50) NOT NULL, 
+                        email      VARCHAR(150) NOT NULL, 
+                        PASSWORD   VARCHAR(100) NOT NULL, 
+                        PRIMARY KEY (id), 
+                        UNIQUE (email)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
