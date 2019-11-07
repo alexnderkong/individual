@@ -4,7 +4,11 @@ services:
     build: ./db
     environment:
     - MYSQL_ROOT_PASSWORD=root   
-      
+    volumes: 
+      - type: volume
+        source: sqlvolume
+        target: /var/lib/mysql
+
   app:
     build: .
     ports: 
@@ -13,3 +17,5 @@ services:
       protocol: tcp
     depends_on:
     - my-sql
+volumes:
+  sqlvolume:

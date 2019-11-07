@@ -2,10 +2,10 @@
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
            (
                         id         INTEGER NOT NULL AUTO_INCREMENT,
                         first_name VARCHAR(50) NOT NULL,
@@ -24,10 +24,10 @@ CREATE TABLE users
 -- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `posts`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS posts (
         id INTEGER NOT NULL AUTO_INCREMENT, 
         title VARCHAR(200) NOT NULL, 
         content VARCHAR(100) NOT NULL, 
