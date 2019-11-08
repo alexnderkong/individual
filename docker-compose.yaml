@@ -17,5 +17,15 @@ services:
       protocol: tcp
     depends_on:
     - my-sql
+
+  jenkins:
+    image: jenkinsci/jenkins
+    ports: 
+    - target: 8080
+      published: 8080
+      protocol: tcp
+    depends_on:
+    - app
+
 volumes:
   sqlvolume:
